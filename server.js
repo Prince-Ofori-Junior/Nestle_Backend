@@ -21,6 +21,8 @@ const PORT = process.env.PORT || 9000;
    SECURITY & MIDDLEWARE
 -------------------------- */
 app.use(helmet());
+
+app.use(helmet());
 app.use(cors({
   origin: [
     "http://localhost:3000",
@@ -38,10 +40,11 @@ app.use(morgan("dev"));
    RATE LIMIT (AUTH ONLY)
 -------------------------- */
 const authLimiter = rateLimit({
-  windowMs: 60 * 1000, // 1 minute
+  windowMs: 60 * 1000,
   max: 10,
   message: "Too many login attempts. Try again later."
 });
+
 app.use("/api/auth", authLimiter);
 
 /* -------------------------
@@ -84,11 +87,9 @@ app.use(errorHandler);
 -------------------------- */
 async function startServer() {
   try {
-    // Test DB connection
     await db.query("SELECT NOW()");
     console.log("📦 PostgreSQL connected successfully");
 
-    // Start server
     app.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
     });
@@ -99,5 +100,3 @@ async function startServer() {
 }
 
 startServer();
-
-module.exports = app; // Export for testing or serverless wrap if needed
