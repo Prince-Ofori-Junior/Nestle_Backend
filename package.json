@@ -23,6 +23,7 @@
     "nodemailer": "^6.10.1",
     "pg": "^8.16.3",
     "ratelimiter": "^3.4.1",
+    "serverless-http": "^4.0.0",
     "twilio": "^5.10.7",
     "uuid": "^9.0.1"
   },

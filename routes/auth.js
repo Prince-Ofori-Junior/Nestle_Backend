@@ -7,7 +7,7 @@ const {
   loginAdmin, 
   registerAdmin 
 } = require("../controllers/authController");
-const { authMiddleware } = require("../middlewares/auth");
+const { authMiddleware } = require("../middlewares/autlsh");
 
 // --------------------
 // PUBLIC ROUTES
